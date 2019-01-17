@@ -1,5 +1,12 @@
 ---
- - hosts: ec2
+-  hosts: ec2
    connection: local
-   roles:
-     - ec2
+   tasks:
+   - name: ProvisionEC2box
+     ec2: 
+       image: ami-0cd3dfa4e37921605
+       instance_type: t2.micro
+       keypair: bikash_devops_key
+       vpc_subnet_id: subnet-0f462475
+       region: us-east-2
+       count: 1
